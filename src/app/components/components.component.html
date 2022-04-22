@@ -1,0 +1,271 @@
+<div class="container" style="margin-top: 136px;margin-bottom: 20px;">
+    <div class="row">
+        <div class="col-lg-6" style="margin-top: 53px;">
+            <div>
+                <svg class="arrow" width="99" height="15" viewBox="0 0 101 15" fill="var(--secondary-text-color)"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M100.705 8.20203C101.095 7.8115 101.095 7.17834 100.705 6.78781L94.3406 0.423851C93.9501 0.0333266 93.3169 0.0333266 92.9264 0.423851C92.5358 0.814375 92.5358 1.44754 92.9264 1.83806L98.5832 7.49492L92.9264 13.1518C92.5358 13.5423 92.5358 14.1755 92.9264 14.566C93.3169 14.9565 93.9501 14.9565 94.3406 14.566L100.705 8.20203ZM0.997437 8.49492H99.9974V6.49492H0.997437V8.49492Z" />
+                </svg>
+                <p class="arrow-text" style="float: right;">🎨 Design your digital loyalty card</p>
+                <div style="clear: both;"></div>
+            </div>
+            <p class="intro-title">The easiest<br />loyalty programme<br />in the world</p>
+            <div>
+                <ul style="list-style-type: none;padding: 0px;">
+                    <li>
+                        <p class="intro-list-item">😀 Delight your customers</p>
+                    </li>
+                    <li>
+                        <p class="intro-list-item">📈 Innovative marketing campaigns</p>
+                    </li>
+                    <li>
+                        <p class="intro-list-item">💰 Grow your bottom line</p>
+                    </li>
+                    <li>
+                        <p class="intro-list-item">🙌 No apps required</p>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top: 35px;">
+                <a class="btn-try" href="https://app.caasius.com/account/register-tenant?editionId=5&subscriptionStartType=3&editionPaymentType=0">Try it now</a>
+                <a class="btn btn-link btn-default btn-schedule" href="https://calendly.com/seanbushell" target="blank">☎️ Schedule a call</a>
+            </div>
+            <div style="margin-left:20px">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8 15.5C3.85775 15.5 0.5 12.1423 0.5 8C0.5 3.85775 3.85775 0.5 8 0.5C12.1423 0.5 15.5 3.85775 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5ZM7.25225 11L12.5548 5.69675L11.4943 4.63625L7.25225 8.879L5.1305 6.75725L4.07 7.81775L7.25225 11Z"
+                        fill="#4FBA5B" />
+                </svg>
+                <span class="trial">30 day free trial</span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div style="margin-top:65px;">
+                        <label class="form-label" for="IssuerProgram_BackgroundColor">Background colour</label>
+                        <input [value]="issuerProgram.backgroundColor"
+                            [style.background]="issuerProgram.backgroundColor" class="form-input"
+                            [(ngModel)]="issuerProgram.backgroundColor" [cpCancelButton]="true"
+                            #BackgroundColor="ngModel" name="BackgroundColor" minlength="7" maxlength="7" required
+                            [cpCancelButtonClass]="'btn btn-primary btn-xs'"
+                            [(colorPicker)]="issuerProgram.backgroundColor" />
+                        <p *ngIf="!BackgroundColor.valid && (BackgroundColor.dirty || BackgroundColor.touched)"
+                            class="form-alert">
+                            Background colour field required
+                        </p>
+                    </div>
+                    <div >
+                        <label class="form-label" for="IssuerProgram_IssuerName">Company name</label>
+                        <input type="text" #IssuerProgram_IssuerName="ngModel" id="IssuerProgram_IssuerName"
+                            class="form-input" [(ngModel)]="issuerProgram.issuerName" name="IssuerProgram_IssuerName"
+                            required />
+                        <p *ngIf="!IssuerProgram_IssuerName.valid && (IssuerProgram_IssuerName.dirty || IssuerProgram_IssuerName.touched)"
+                            class="form-alert">
+                            Company name field required
+                        </p>
+                    </div>
+                    <div >
+                        <label class="form-label" for="IssuerProgram_ProgramName">Programme name</label>
+                        <input type="text" #ProgramName="ngModel" id="IssuerProgram_ProgramName" class="form-input"
+                            [(ngModel)]="issuerProgram.programName" name="ProgramName" required />
+                        <p *ngIf="!ProgramName.valid && (ProgramName.dirty || ProgramName.touched)" class="form-alert">
+                            Programme name field required
+                        </p>
+                    </div>
+                    <div >
+                        <label class="form-label" for="IssuerProgram_StampCount">Maximum Stamp Required *</label>
+                        <input type="number" #StampCount="ngModel" id="IssuerProgram_StampCount" class="form-input"
+                            [(ngModel)]="issuerProgram.stampCount" name="StampCount" />
+                        <p *ngIf="!StampCount.valid && (StampCount.dirty || StampCount.touched)" class="form-alert">
+                            Fill Stamp Required field
+                        </p>
+                    </div>
+                    <div >
+                        <label class="form-label" for="IssuerProgram_ProgramUrl">Programme Logo</label>
+                        <input type="file" (change)="fileChangeEvent($event)" id="IssuerProgram_ProgramUrl"
+                            class="form-file" name="IssuerProgram_ProgramUrl" required />
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                            [aspectRatio]="1 / 1" [resizeToWidth]="128" format="png"
+                            (imageCropped)="imageCroppedFile($event)">
+                        </image-cropper>
+                    </div>
+                    <div >
+                        <label class="form-label" for="IssuerProgram_HeroLogoUrl">Hero image</label>
+                        <input type="file" (change)="fileChangeEvent2($event)" id="IssuerProgram_HeroLogoUrl"
+                            class="form-file" name="IssuerProgram_HeroLogoUrl" required />
+                        <image-cropper [imageChangedEvent]="imageChangedEvent2" [maintainAspectRatio]="true"
+                            [aspectRatio]="10 / 3" [resizeToWidth]="512" format="png"
+                            (imageCropped)="imageCroppedFile2($event)">
+                        </image-cropper>
+                    </div>
+                    <a class="btn btn-register btn-sm" href="https://app.caasius.com/account/select-edition">Register</a>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-6 position-relative" style="text-align: right;cursor: pointer;"
+                            (click)="setGoogle()">
+                            <div class="position-absolute" style="width:calc(100% - 30px);height:60%;top:20%;left:30px;border-right:var(--theme-border);"></div>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="var(--main-text-color)"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.956 7.356V10.807H13.748C13.302 13 11.435 14.26 8.956 14.26C6.06851 14.2202 3.74862 11.8682 3.74862 8.9805C3.74862 6.09275 6.06851 3.74072 8.956 3.70098C10.1562 3.69954 11.3194 4.11605 12.246 4.87898L14.846 2.27898C11.8636 -0.342948 7.508 -0.680188 4.15752 1.45142C0.807072 3.58303 -0.733018 7.6712 0.378212 11.4836C1.48943 15.296 4.98491 17.9164 8.956 17.914C13.423 17.914 17.485 14.665 17.485 8.98C17.4781 8.4326 17.411 7.8877 17.285 7.355L8.956 7.356Z" />
+                            </svg>
+                        </div>
+                        <div class="col-6 position-relative" style="cursor: pointer;"
+                            (click)="setApple()">
+                            <div class="position-absolute" style="width:calc(100% - 30px);height:60%;top:20%;left:0px;border-left:var(--theme-border);"></div>                     
+                            <svg width="18" height="20" viewBox="0 0 18 20" fill="var(--main-text-color)"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.0941 19.006C5.46533 18.9719 4.87364 18.6977 4.4411 18.24C3.9237 17.7422 3.46199 17.1897 3.0641 16.592C2.44259 15.702 1.95131 14.7279 1.6051 13.699C1.21297 12.5922 1.00652 11.4282 0.994103 10.254C0.963973 9.1019 1.24961 7.96346 1.8201 6.96202C2.23768 6.24012 2.83329 5.63728 3.5501 5.21102C4.25899 4.78659 5.06792 4.55813 5.8941 4.54902C6.51692 4.58587 7.129 4.72823 7.7041 4.97002C8.1627 5.17178 8.6453 5.31362 9.1401 5.39202C9.6861 5.27763 10.2197 5.11017 10.7331 4.89202C11.3408 4.65474 11.9842 4.52187 12.6361 4.49902C12.7231 4.49902 12.8091 4.49902 12.8921 4.50902C14.3216 4.55048 15.6512 5.25221 16.4921 6.40902C15.1551 7.12387 14.3341 8.5303 14.3691 10.046C14.3559 11.1956 14.8352 12.2959 15.6861 13.069C16.069 13.4339 16.5149 13.7262 17.0021 13.932C16.9021 14.232 16.7871 14.522 16.6651 14.814C16.3878 15.4593 16.0457 16.0748 15.6441 16.651C15.265 17.2282 14.8237 17.7621 14.3281 18.243C13.8757 18.6919 13.2727 18.9567 12.6361 18.986C12.0965 18.9621 11.5663 18.8355 11.0741 18.613C10.5433 18.3818 9.9729 18.2551 9.3941 18.24C8.799 18.2517 8.2117 18.3777 7.6641 18.611C7.1911 18.8244 6.68585 18.9572 6.1691 19.004L6.0941 19.006ZM9.2441 4.49902C9.1691 4.49902 9.0941 4.49902 9.0191 4.49002C9.0033 4.37099 8.995 4.25109 8.9941 4.13102C9.0268 3.13216 9.4172 2.17826 10.0941 1.44302C10.4724 1.0206 10.931 0.677624 11.4431 0.434023C11.921 0.188023 12.4432 0.0401234 12.9791 -0.000976562C12.9941 0.130023 12.9941 0.258023 12.9941 0.380023C12.98 1.36317 12.6106 2.308 11.9541 3.04002C11.3106 3.9028 10.3186 4.43689 9.2441 4.49902Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div *ngIf="apple" style="height: 100%;text-align: center;">
+                            <div class="loyalty-card" [style.background]="issuerProgram.backgroundColor"
+                                style="background-color: rgb(255, 255, 255); color: rgb(255, 255, 255);">
+                                <div class="Wallet-rows-root row118">
+                                    <div class="col-2 Wallet-rows-root row119">
+                                        <img *ngIf="programLogo" id="programLogoImage" [src]="programLogo"
+                                            height="36px">
+                                        <img *ngIf="!programLogo" src="/assets/img/caasius-logo.png" height="36px">
+                                    </div>
+                                    <div class="col-6 mt-6">
+                                    </div>
+                                    <div class="col-4 Wallet-rows-root row123">
+                                        <div class="Wallet-rows-root row124">{{issuerProgram.loyaltyPointLabel}}</div>
+                                        <div class="Wallet-rows-root row125">0 / {{issuerProgram.stampCount}}</div>
+                                    </div>
+                                </div>
+                                <div *ngIf="!heroImage" class="Wallet-rows-root row22 position-relative">
+                                    <img id="heroImage" src="/assets/img/default-hero.jpg" width="100%" height="90">
+                                    <div class="Wallet-rows-root row136 position-absolute" style="top:0px">0</div>
+                                    <div class="Wallet-rows-root row135 position-absolute" style="top:60px">of
+                                        {{issuerProgram.stampCount}} stamps</div>
+                                </div>
+                                <div *ngIf="heroImage" class="Wallet-rows-root row22 position-relative">
+                                    <img id="heroImage" [src]="heroImage" width="100%" height="90">
+                                    <div class="Wallet-rows-root row136 position-absolute" style="top:0px">0</div>
+                                    <div class="Wallet-rows-root row135 position-absolute" style="top:60px">of
+                                        {{issuerProgram.stampCount}} stamps</div>
+                                </div>
+                                <div class="row Wallet-rows-root row120">
+                                    <div class="col-6">
+                                        <div class="Wallet-rows-root row121">COMPANY</div>
+                                        <div class="Wallet-rows-root row126">{{issuerProgram.issuerName}}</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="Wallet-rows-root row121">PROGRAMME</div>
+                                        <div class="Wallet-rows-root row126" style="padding-right:10px;">
+                                            {{issuerProgram.programName}}</div>
+                                    </div>
+                                </div>
+                                <div class="Wallet-rows-root row133">
+                                    <div class=" Wallet-rows-root row130">
+                                        <img src="/assets/img/qrcode_a.png" height="135px" width="135px">
+                                        <div class="row Wallet-rows-root row134 mb-2">{{issuerProgram.barcodeText}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!apple" style="height: 100%;text-align: center;">
+                            <div class="loyalty-card" [style.background]="issuerProgram.backgroundColor"
+                                style="background-color: rgb(255, 255, 255); color: rgb(255, 255, 255);">
+                                <div class="Wallet-rows-root row18">
+                                    <div class="Wallet-rows-root row19">
+                                        <img *ngIf="programLogo" id="programLogoImage" [src]="programLogo" height="50px"
+                                            width="50px" style="border-radius: 50px;">
+                                        <img *ngIf="!programLogo" src="/assets/img/caasius-logo.png" height="50px"
+                                            width="50px" style="border-radius: 50px;">
+                                    </div>
+                                    <div class="Wallet-rows-root row20 company-name">{{issuerProgram.issuerName}}</div>
+                                    <div class="Wallet-rows-root row21 programme-name">{{issuerProgram.programName}}</div>
+                                </div>
+                                <div class="Wallet-rows-root row22">
+                                    <img *ngIf="heroImage" id="heroLogoImage" width="100%" height="90" [src]="heroImage">
+                                    <img *ngIf="!heroImage" id="heroLogoImage" width="100%" height="90"
+                                        src="/assets/img/default-hero.jpg">
+                                </div>
+                                <div class="Wallet-rows-root row23">
+                                    <div class="Wallet-rows-root row20">{{issuerProgram.loyaltyPointLabel}}</div>
+                                    <div *ngIf="issuerProgram.stampCount" class="Wallet-rows-root row24">0 /
+                                        {{issuerProgram.stampCount}}</div>
+                                </div>
+
+                                <div class="Wallet-rows-root row133" style="padding: 0px;">
+                                    <div class=" Wallet-rows-root row130">
+                                        <img src="/assets/img/qrcode_a.png" height="135px" width="135px">
+                                        <div class="row Wallet-rows-root row134 mb-2">{{issuerProgram.barcodeText}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color: var(--secondary-bkg-color);padding: 0px 45px 40px 45px;margin-top: 55px;">
+        <div class="col-md-4" style="margin-top: 40px;">
+            <p class="intro-header">⏰ Live in 5 minutes</p>
+            <p class="intro-description">
+                Design your loyalty card and share the link with your customers in less than five minutes, in-store or online.
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 40px;">
+            <p class="intro-header">🎉 Marketing Notifications</p>
+            <p class="intro-description">
+                Send push notifications directly to your customer’s pockets for special offers and promotions.
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 40px;">
+            <p class="intro-header">📈 Data Driven and Secure</p>
+            <p class="intro-description">
+                Get to know your customers by collecting valuable data insights in compliance with GDPR.
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 40px;">
+            <p class="intro-header">👌 Convenience</p>
+            <p class="intro-description">
+                With the move to digital bank cards, storing loyalty cards in mobile wallets removes the need for any other apps.
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 40px;">
+            <p class="intro-header">♻️ Go-Green</p>
+            <p class="intro-description">
+                We remove the need to print loyalty cards and help you do your part towards a more sustainable future.
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 40px;">
+            <p class="intro-header">🙌 Contactless</p>
+            <p class="intro-description">
+                No more handling and passing old cards over and back, removing the need to touch unhygienic cards.
+            </p>
+        </div>
+    </div>
+    <div class="row" style="background-color: var(--bkg-color);padding: 15px 45px 35px 45px;">
+        <div class="col-md-4" style="margin-top: 20px;">
+            <p class="method-header">1. Customers Sign Up</p>
+            <p class="method-description">
+                Once you have designed your card, share your link to download it with your customers via social media and in store via QR Code for customers to add to their mobile wallet (apple and android).
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 20px;">
+            <p class="method-header">2. Add Stamps</p>
+            <p class="method-description">
+                Once your customers add their loyalty card to their digital wallet, simply scan the card with any mobile device’s camera to add stamps to their loyalty card in less than 5 seconds.
+            </p>
+        </div>
+        <div class="col-md-4" style="margin-top: 20px;">
+            <p class="method-header">3. Track Rewards and Data</p>
+            <p class="method-description">
+                With cards automatically resetting once the stamp count is reached, you can track how many rewards have been given along with other great data insights with our dashboards.
+            </p>
+        </div>
+    </div>
+</div>

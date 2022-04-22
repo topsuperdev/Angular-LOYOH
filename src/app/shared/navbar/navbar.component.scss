@@ -1,0 +1,45 @@
+.navbar {
+    background: var(--bkg-color);
+    box-shadow: none;
+}
+
+.navbar.navbar-transparent {
+    padding-top: 0px;
+    background-color: var(--bkg-color) !important;
+}
+
+.navbar .navbar-brand {
+    font-size: 27px;
+    line-height: 30px;
+    font-weight: 600;
+    font-family: Montsterrat;
+    color: var(--main-text-color);
+}
+
+.navbar .navbar-toggler .navbar-toggler-bar {
+    background: var(--main-text-color);
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    font-family: Avenir Next;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0px 15px;
+    padding: 0px;
+    color: var(--main-text-color);
+    text-transform: none;
+}
+
+.navbar .navbar-nav .nav-item:last-child .nav-link {
+    border: var(--schedule-border);
+    border-radius: 9px;
+    padding: 2px 5px;
+}
+
+.btn-switch {
+    top: 32px;
+    right: 32px;
+    cursor: pointer;
+    z-index: 99;
+}

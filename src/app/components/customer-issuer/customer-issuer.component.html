@@ -1,0 +1,127 @@
+<div class="wrapper">
+
+    <div class="page-header section-dark"
+        style="background-image: url('assets/img/register-background.png')">
+        <div class="content-center">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 ml-auto mr-auto">
+                            <div class="card card-register">
+                                <h3 class="title">Welcome to {{tenantName}} Loyalty Program</h3>
+    
+                                <form class="register-form" #issuerCustomerForm="ngForm" novalidate (ngSubmit)="save()"
+                                    autocomplete="off">
+    
+                                    <div class="row"  *ngIf="!walletButtonActivate">
+                                        <input type="text" [(ngModel)]="issuerCustomer.customerState" name="IssuerCustomer.customerState" hidden />
+                                        
+                                        <label for="IssuerCustomer_Name"><strong>Name *</strong></label>
+                                        <div class="input-group form-group-no-border">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="nc-icon nc-single-02"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" #IssuerCustomer_Name="ngModel" id="IssuerCustomer_Name"
+                                                class="form-control" placeholder="Name" [(ngModel)]="issuerCustomer.name"
+                                                name="IssuerCustomer_Name" minlength="3" maxlength="50" required />
+                                        </div>
+                                        <div *ngIf="!IssuerCustomer_Name.valid && (IssuerCustomer_Name.dirty || IssuerCustomer_Name.touched)"
+                                            class="row alert alert-danger">
+                                            Name required
+                                        </div>
+                                        <div class="row"></div>
+    
+                                        <label for="IssuerCustomer_Email"><strong>Email *</strong></label>
+                                        <div class="input-group form-group-no-border">
+    
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="nc-icon nc-send"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" #IssuerCustomer_Email="ngModel" id="IssuerCustomer_Email"
+                                                class="form-control" placeholder="Email" [(ngModel)]="issuerCustomer.email"
+                                                name="IssuerCustomer_Email" minlength="5" maxlength="255" required />
+    
+                                        </div>
+                                        <div *ngIf="!IssuerCustomer_Email.valid && (IssuerCustomer_Email.dirty || IssuerCustomer_Email.touched)"
+                                            class="row alert alert-danger">
+                                            Email required
+                                        </div>
+
+                                        <label for="IssuerCustomer_MobileNumber"><strong>Mobile Number</strong></label>
+                                        <div class="input-group form-group-no-border">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="nc-icon nc-mobile"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" #IssuerCustomer_MobileNumber="ngModel"
+                                                id="IssuerCustomer_MobileNumber" class="form-control"
+                                                placeholder="Mobile Number" [(ngModel)]="issuerCustomer.mobileNumber"
+                                                name="IssuerCustomer_MobileNumber" minlength="0" maxlength="20" />
+                                        </div>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="checkbox"
+                                              #IssuerCustomer_IsAllowGdpr="ngModel"
+                                              id="IssuerCustomer_IsAllowGdpr" class="form-control" 
+                                              [(ngModel)]="issuerCustomer.isAllowGdpr" name="IssuerCustomer_IsAllowGdpr" >
+                                              <span class="form-check-sign"></span>
+                                              I would like to receive special offers via push notification, SMS or email. Unsubscribe at any time.
+                                            </label>
+                                          </div>
+
+                                        <button (click)="save()"
+                                            class="btn btn-danger btn-block btn-round"
+                                            [class.spinner]="saving"
+                                            [disabled]="!issuerCustomerForm.form.valid">
+                                            <i class="fa fa-save"></i>
+                                            <span>Register</span>
+                                        </button>
+                                        <button class="btn btn-dark dark p-2 justify-content-start"
+                                            (click)="googleWallet()" *ngIf="walletButtonActivate">
+                                        
+                                            <span>Add To Google Wallet</span>
+                                        </button>
+                                    </div>
+                                </form>
+                                    <div class="row" *ngIf="walletButtonActivate" >
+                                        <nav  class="navbar navbar-expand-lg bg-success p-3">
+                                            <div class="container">
+                                                The customer successfully registreted. 
+                                                <br/>
+                                                Click the buton to add your unique wallet passes to your phone.
+                                            </div>
+                                        </nav>
+                                        <div class="pr-3">
+                                            <button class="btn btn-dark dark p-2 justify-content-start"
+                                                (click)="appleWallet()" type="button" [disabled]="!walletButtonActivate">
+                                                <img class="pr-3" src="assets/img/Add_to_Apple_Wallet.svg" height="32"
+                                                    alt="add to Apple Wallet"/>
+                                            </button>
+                                            <button class="btn btn-dark dark p-2 justify-content-start"
+                                                (click)="googleWallet()" type="button" [disabled]="!walletButtonActivate">
+                                                <img class="pr-3" src="assets/img/Save_to_Google_Pay.svg" height="32"
+                                                    alt="Save to Google Pay" />
+                                            </button>
+                                        </div>
+                                        <br/>
+                                        
+                                        <div class="container">
+                                            <br/>To get updates automatically when you earn a stamp, eneable "Automatic Updates". 
+                                            <br/><br/>
+                                            You should eneable "Allow Notification" to get push notification. 
+                                            <br/>You can disable "Allow Notification" to stop getting push notification.
+                                            <br/>
+                                            <img class="pr-3" src="assets/img/notification.jpg"/>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <!-- <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div> -->
+    </div>
+</div>

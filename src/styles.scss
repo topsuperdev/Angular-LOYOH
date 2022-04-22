@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    --bkg-color: #fff;
+    --secondary-bkg-color: #333333;
+    --main-text-color: #000;
+    --switch-color: #212121;
+    --secondary-text-color: #4267B2;
+    --primary-text-color: #363636;
+    --intro-text-title: #fff;
+    --intro-text-description: #fff;
+    --schedule-border: 1px solid #4267B2;
+    --theme-border: 1px solid #363636;
+}
+
+body.dark-theme {
+    --bkg-color: #333333;
+    --secondary-bkg-color: #fff;
+    --main-text-color: #fff;
+    --switch-color: #FFFFFF;
+    --secondary-text-color: #C5B416;
+    --primary-text-color: #fff;
+    --intro-text-title: #000;
+    --intro-text-description: #333333;
+    --schedule-border: 1px solid #C5B416;
+    --theme-border: 1px solid #fff;
+}
+
+body {
+    background: var(--bkg-color);
+    -webkit-transition: all 0.4s;
+}
+
+@font-face {
+    font-family: "Montsterrat";
+    src: url("./assets/fonts/Montserrat-SemiBold.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url("./assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+}
