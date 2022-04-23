@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy, HashLocationStrategy} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -50,7 +50,7 @@ const routes: Routes = [
     })
   ],
   providers: [
-    {provide: LocationStrategy, useClass: PathLocationStrategy} 
+    {provide: LocationStrategy, useClass: HashLocationStrategy} 
   ],
   exports: [
   ],
